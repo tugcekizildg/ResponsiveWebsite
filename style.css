@@ -1,23 +1,132 @@
-/* CSS Reset */
+@layer global {
+  /* source-sans-3-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/source-sans-3-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* source-sans-3-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/source-sans-3-v19-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  :root {
+    /* Colors */
+    --clr-white: #ffffff;
+    --clr-dark-gray: #383a4a;
+    --clr-purple: #495bcf;
+    --clr-teal: #00d3d4;
+    --clr-transparent: transparent;
+    --clr-fuchsia: #bf1085;
+
+    --color-main-bg: var(--clr-white);
+    --color-text-dark: var(--clr-dark-gray);
+    --color-text-light: var(--clr-white);
+    --color-hero-bg: var(--clr-purple);
+    --color-button-primary-bg: var(--clr-teal);
+    --color-button-primary-text: var(--clr-dark-gray);
+    --color-button-secondary-bg: var(--clr-transparent);
+    --color-button-secondary-border: var(--clr-white);
+    --color-button-secondary-text: var(--clr-white);
+    --color-fullwidth-bg: var(--clr-fuchsia);
+
+    /* Fonts */
+    --fs-14: 0.875rem;
+    --fs-16: 1rem;
+    --fs-18: 1.125rem;
+    --fs-20: 1.25rem;
+    --fs-24: 1.5rem;
+    --fs-36: 2.25rem;
+    --fs-42: 2.625rem;
+    --fs-48: 3rem;
+    --fs-72: 4.5rem;
+
+    --font-size-topnav: var(--fs-14);
+    --font-size-h1: var(--fs-42);
+    --font-size-h2: var(--fs-36);
+    --font-size-h3: var(--fs-24);
+
+    @media (width >= 37.5rem) {
+      --font-size-topnav: var(--fs-16);
+      --font-size-h1: var(--fs-72);
+      --font-size-h2: var(--fs-48);
+    }
+  }
+
+  /* CSS Reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /*Typography */
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--color-text-dark);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  /*Layout */
+  .wrapper {
+    max-width: 1200px;
+    width: calc(100% - 48px);
+    margin-inline: auto;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
+@layer component {
 }
 
-a {
-  text-decoration: none;
-}
-
-img,
-picture,
-svg {
-  display: block;
-  max-width: 100%;
+@layer utility {
+  .visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 }
