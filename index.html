@@ -14,10 +14,31 @@
 </head>
 
 <body>
-    <header>
+    <a href="#main" class="visually-hidden skip">Skip to main content</a>
+    <header class="topnav">
+        <h2 class="visually-hidden">Header</h2>
+        <div class="wrapper topnav__wrapper">
+            <a href="/" class="topnav__homelink">
+                <img src="./assets/images/logo-mythos.svg" alt="Mythos homepage" class="topnav__logo" width="128"
+                    height="36" />
+            </a>
+            <nav>
+                <ul class="topnav__links">
+                    <li class="topnav__item">
+                        <a href="#" class="topnav__link">Features</a>
+                    </li>
+                    <li class="topnav__item">
+                        <a href="#" class="topnav__link">Pricing</a>
+                    </li>
+                    <li class="topnav__item">
+                        <a href="#" class="topnav__link">About</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
     </header>
-    <main>
+    <main id="main">
         <section class="hero">
             <h1>Find that elusive unicorn</h1>
         </section>
@@ -34,7 +55,7 @@
         </section>
     </main>
     <footer>
-
+        <h2 class="visually-hidden">Footer</h2>
     </footer>
     <script src="/script.js"></script>
 </body>

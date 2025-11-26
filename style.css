@@ -28,6 +28,7 @@
     --color-main-bg: var(--clr-white);
     --color-text-dark: var(--clr-dark-gray);
     --color-text-light: var(--clr-white);
+    --color-header-bg: var(--clr-purple);
     --color-hero-bg: var(--clr-purple);
     --color-button-primary-bg: var(--clr-teal);
     --color-button-primary-text: var(--clr-dark-gray);
@@ -80,6 +81,7 @@
   svg {
     display: block;
     max-width: 100%;
+    height: auto;
   }
 
   /*Typography */
@@ -118,6 +120,61 @@
 }
 
 @layer component {
+  .topnav {
+    background-color: var(--color-header-bg);
+  }
+
+  .topnav__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 0.75rem;
+
+    @media (width >= 37.5rem) {
+      padding-block: 1.25rem;
+    }
+  }
+
+  .topnav__homelink {
+    &:hover,
+    &:focus {
+      opacity: 0.9;
+    }
+  }
+
+  .topnav__logo {
+    width: 4.375rem;
+
+    @media (width >= 37.5rem) {
+      width: 8rem;
+    }
+  }
+
+  .topnav__links {
+    list-style-type: none;
+    display: flex;
+    gap: 1.25rem;
+
+    @media (width >= 37.5rem) {
+      gap: 2.5rem;
+    }
+  }
+
+  .topnav__item {
+  }
+
+  .topnav__link {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--font-size-topnav);
+    font-weight: 700;
+    color: var(--color-text-light);
+    transition: color 200ms ease-in-out;
+    &:hover,
+    &:focus {
+      color: var(--clr-teal);
+    }
+  }
 }
 
 @layer utility {
@@ -128,5 +185,15 @@
     width: 1px;
     height: 1px;
     overflow: hidden;
+  }
+
+  .visually-hidden.skip:focus {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid;
   }
 }
