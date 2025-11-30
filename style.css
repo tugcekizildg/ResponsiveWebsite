@@ -318,9 +318,6 @@
       }
     }
 
-    .features__icon {
-    }
-
     .features__title {
       line-height: 1;
     }
@@ -335,6 +332,37 @@
         margin-inline: 0;
         max-width: 38ch;
       }
+    }
+  }
+
+  .fw-investment {
+    background-color: var(--color-fullwidth-bg);
+    color: var(--color-text-light);
+    text-align: center;
+    .fw-investment__title {
+      margin-block-end: 20px;
+      max-width: 20ch;
+      margin-inline: auto;
+
+      @media (width >= 62.5rem) {
+        max-width: unset;
+      }
+    }
+
+    .fw-investment__description {
+      margin-block-end: 40px;
+      max-width: 40ch;
+      margin-inline: auto;
+
+      @media (width >= 62.5rem) {
+        max-width: 70ch;
+      }
+    }
+
+    .fw-investment__image {
+      margin-inline: auto;
+      max-width: 49.5rem;
+      width: 100%;
     }
   }
 }
