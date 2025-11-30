@@ -36,12 +36,22 @@
     --color-button-primary-border: var(--clr-teal);
     --color-button-primary-border-hover: var(--clr-teal-dark);
     --color-button-primary-text: var(--clr-dark-gray);
+
+    --color-button-primary-white-bg: var(--clr-white);
+    --color-button-primary-white-bg-hover: var(--clr-teal);
+    --color-button-primary-white-border: var(--clr-white);
+    --color-button-primary-white-border-hover: var(--clr-teal);
+    --color-button-primary-white-text: var(--clr-dark-gray);
+
     --color-button-secondary-bg: var(--clr-transparent);
     --color-button-secondary-bg-hover: var(--clr-white);
     --color-button-secondary-border: var(--clr-white);
     --color-button-secondary-text: var(--clr-white);
     --color-button-secondary-text-hover: var(--color-hero-bg);
     --color-fullwidth-bg: var(--clr-fuchsia);
+    --color-cta-gradient-1: var(--clr-dark-gray);
+    --color-cta-gradient-2: var(--clr-purple);
+    --color-cta-gradient-3: var(--clr-teal);
 
     /* Fonts */
     --fs-14: 0.875rem;
@@ -177,6 +187,18 @@
       &:focus {
         background-color: var(--color-button-primary-bg-hover);
         border-color: var(--color-button-primary-border-hover);
+      }
+
+      &.white {
+        background-color: var(--color-button-primary-white-bg);
+        color: var(--color-button-primary-text);
+        border: 2px solid var(--color-button-primary-white-border);
+
+        &:hover,
+        &:focus {
+          background-color: var(--color-button-primary-white-bg-hover);
+          border-color: var(--color-button-primary-white-border-hover);
+        }
       }
     }
 
@@ -373,9 +395,6 @@
       max-width: 50rem;
     }
 
-    .testimonial__figure {
-    }
-
     .testimonial__icon {
       width: 3.25rem;
       margin-block-end: 20px;
@@ -384,9 +403,6 @@
         width: 4.875rem;
         margin-block-end: 30px;
       }
-    }
-
-    .testimonial__blockquote {
     }
 
     .testimonial__quote-text {
@@ -417,8 +433,39 @@
       width: 7.5rem;
       border-radius: 50%;
     }
+  }
 
-    .testimonial__author-description {
+  .fw-cta {
+    background: linear-gradient(
+      to right,
+      var(--color-cta-gradient-1) 0%,
+      var(--color-cta-gradient-2) 75%,
+      var(--color-cta-gradient-3) 150%
+    );
+    color: var(--color-text-light);
+    text-align: center;
+    @media (width >= 62.5rem) {
+      background: linear-gradient(
+        to right,
+        var(--color-cta-gradient-1) 0%,
+        var(--color-cta-gradient-2) 55%,
+        var(--color-cta-gradient-3) 120%
+      );
+    }
+
+    .fw-cta__wrapper {
+      text-align: center;
+    }
+
+    .fw-cta__title {
+      margin-block-end: 20px;
+    }
+
+    .fw-cta__description {
+      margin-block-end: 40px;
+    }
+
+    .fw-cta__button {
     }
   }
 }
