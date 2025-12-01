@@ -25,11 +25,14 @@
     --clr-teal-dark: #00bdbd;
     --clr-transparent: transparent;
     --clr-fuchsia: #bf1085;
+    --clr-yellow: #fed710;
 
     --color-main-bg: var(--clr-white);
     --color-text-dark: var(--clr-dark-gray);
     --color-text-light: var(--clr-white);
     --color-header-bg: var(--clr-purple);
+    --color-topnav-gradient-1: var(--clr-teal);
+    --color-topnav-gradient-2: var(--clr-yellow);
     --color-hero-bg: var(--clr-purple);
     --color-button-primary-bg: var(--clr-teal);
     --color-button-primary-bg-hover: var(--clr-teal-dark);
@@ -263,16 +266,35 @@
       font-size: var(--font-size-topnav);
       font-weight: 700;
       color: var(--color-text-light);
-      transition: color 200ms ease-in-out;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 3px;
+        background: linear-gradient(
+          to right,
+          var(--color-topnav-gradient-1),
+          var(--color-topnav-gradient-2) 82%
+        );
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
       &:hover,
       &:focus {
-        color: var(--clr-teal);
+        &::after {
+          opacity: 1;
+        }
       }
     }
   }
 
   .hero {
     background-color: var(--color-hero-bg);
+    background-image: url('./assets/icons/hero-wave.svg');
+    background-repeat: no-repeat;
+    background-position: -5px calc(100% + 5px);
+    background-size: calc(100% + 10px) auto;
     color: var(--color-text-light);
 
     .hero__wrapper {
