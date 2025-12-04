@@ -70,7 +70,7 @@
     --fs-72: 4.5rem;
 
     --font-size-topnav: var(--fs-14);
-    --font-size-h1: var(--fs-42);
+    --font-size-h1: clamp(2.625rem, 1.5rem + 4.8vw, 4.5rem);
     --font-size-h2: var(--fs-36);
     --font-size-h3: var(--fs-24);
     --font-size-button: var(--fs-18);
@@ -78,7 +78,6 @@
 
     @media (width >= 37.5rem) {
       --font-size-topnav: var(--fs-16);
-      --font-size-h1: var(--fs-72);
       --font-size-h2: var(--fs-48);
       --font-size-quote: var(--fs-36);
     }
@@ -293,32 +292,31 @@
     background-color: var(--color-hero-bg);
     background-image: url('./assets/icons/hero-wave.svg');
     background-repeat: no-repeat;
-    background-position: -5px calc(100% + 5px);
-    background-size: calc(100% + 10px) auto;
+    background-position: center calc(100% + 5px);
+    background-size: 1440px auto;
     color: var(--color-text-light);
+
+    @media (width >= 62.5rem) {
+      background-position: -5px calc(100% + 5px);
+      background-size: calc(100% + 10px) auto;
+    }
 
     .hero__wrapper {
       display: grid;
-      padding-block: 30px 60px;
+      padding-block: 30px 120px;
 
       @media (width >= 62.5rem) {
         grid-template-columns: 6fr 5fr;
-        padding-block: 40px 80px;
-        align-items: center;
+        padding-block: 80px 0;
       }
     }
 
     .hero__image {
-      width: 12.5rem;
+      width: clamp(12.5rem, 1.8874999999999993rem + 45.28vw, 30.1875rem);
       margin-block-end: 40px;
       justify-self: center;
 
-      @media (width >= 37.5rem) {
-        width: 25rem;
-      }
-
       @media (width >= 62.5rem) {
-        width: 30.1875rem;
         order: 2;
         margin-block-end: 0;
         justify-self: end;
@@ -336,7 +334,7 @@
 
     .hero__content {
       margin-block-end: 40px;
-      max-width: 40ch;
+      max-width: 50ch;
     }
 
     .hero__buttons {
