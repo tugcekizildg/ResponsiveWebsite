@@ -88,6 +88,7 @@
     --font-size-pre-title: var(--fs-20);
     --font-size-quote: var(--fs-24);
     --font-size-quote-author: var(--fs-20);
+    --font-size-form: var(--fs-18);
 
     @media (width >= 37.5rem) {
       --font-size-topnav: var(--fs-16);
@@ -186,6 +187,11 @@
     }
   }
 
+  input,
+  button {
+    font-family: inherit;
+  }
+
   /*Layout */
   .wrapper {
     max-width: 1200px;
@@ -248,6 +254,37 @@
         background-color: var(--color-button-secondary-bg-hover);
         color: var(--color-button-secondary-text-hover);
       }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 30rem;
+    margin-inline: auto;
+    .form__label,
+    .form__text {
+      font-size: var(--font-size-form);
+      line-height: 1;
+    }
+    .form__label {
+      font-weight: 700;
+      display: inline-block;
+      flex: 100%;
+      text-align: left;
+    }
+
+    .form__text {
+      padding: 8px 20px;
+      border-radius: 5px;
+      border: none;
+      flex: 2;
+    }
+
+    .form__button {
+      flex: 1;
+      display: inline-block;
     }
   }
 
