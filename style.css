@@ -22,6 +22,7 @@
     --clr-dark-gray: #383a4a;
     --clr-dark-gray-40: rgba(55, 57, 73, 0.4);
     --clr-purple: #495bcf;
+    --clr-purple-dark-60: rgba(37, 51, 141, 0.6);
     --clr-teal: #00d3d4;
     --clr-teal-dark: #00bdbd;
     --clr-transparent: transparent;
@@ -34,6 +35,8 @@
     --color-text-light: var(--clr-white);
     --color-text-link: var(--clr-fuchsia);
     --color-header-bg: var(--clr-purple);
+    --color-topnav-menu-bg: var(--clr-purple);
+    --color-topnav-menu-overlay: var(--clr-dark-gray-40);
     --color-topnav-gradient-1: var(--clr-teal);
     --color-topnav-gradient-2: var(--clr-yellow);
     --color-hero-bg: var(--clr-purple);
@@ -79,7 +82,7 @@
     --fs-48: 3rem;
     --fs-72: 4.5rem;
 
-    --font-size-topnav: var(--fs-14);
+    --font-size-topnav: var(--fs-20);
     --font-size-h1: clamp(2.625rem, 1.5rem + 4.8vw, 4.5rem);
     --font-size-h2: var(--fs-36);
     --font-size-h3: var(--fs-24);
@@ -122,6 +125,15 @@
     display: block;
     max-width: 100%;
     height: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    padding: 0;
+    background: none;
+    border: none;
   }
 
   /*Typography */
@@ -276,10 +288,11 @@
     }
 
     .form__text {
+      background-color: var(--color-main-bg);
       padding: 8px 20px;
       border-radius: 5px;
       border: none;
-      flex: 2;
+      flex: 3;
     }
 
     .form__button {
@@ -318,13 +331,73 @@
       }
     }
 
+    .topnav__overlay {
+      opacity: 0;
+
+      @media (width < 37.5rem) {
+        position: fixed;
+        inset: 0;
+        background-color: var(--color-topnav-menu-overlay);
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+
+        &:has(+ .topnav__open[aria-expanded='true']) {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+
+    .topnav__open {
+      display: none;
+      cursor: pointer;
+
+      @media (width < 37.5rem) {
+        display: block;
+      }
+
+      &[aria-expanded='true'] {
+        + .topnav__menu {
+          translate: 0 0;
+        }
+      }
+    }
+
+    .topnav__menu {
+      @media (width < 37.5rem) {
+        position: fixed;
+        inset: 0 0 auto 0;
+        background-color: var(--color-topnav-menu-bg);
+        padding: 12px 24px 120px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 12px 12px var(--clr-purple-dark-60);
+        translate: 0 -110%;
+
+        &.animating {
+          transition: translate 0.3s ease-in-out;
+        }
+      }
+    }
+
+    .topnav__close {
+      display: none;
+      cursor: pointer;
+
+      @media (width < 37.5rem) {
+        display: block;
+        margin-left: auto;
+      }
+    }
+
     .topnav__links {
       list-style-type: none;
       display: flex;
-      gap: 1.25rem;
+      gap: 40px;
 
-      @media (width >= 37.5rem) {
-        gap: 2.5rem;
+      @media (width < 37.5rem) {
+        flex-direction: column;
+        align-items: center;
+        margin-block-start: 84px;
       }
     }
 
@@ -333,7 +406,12 @@
       letter-spacing: 0.05em;
       font-size: var(--font-size-topnav);
       font-weight: 700;
+      line-height: 1;
       color: var(--color-text-light);
+
+      @media (width < 37.5rem) {
+        text-transform: none;
+      }
 
       &::after {
         content: '';
@@ -353,6 +431,14 @@
         &::after {
           opacity: 1;
         }
+      }
+    }
+
+    .topnav__item:first-child {
+      display: none;
+
+      @media (width < 37.5rem) {
+        display: block;
       }
     }
   }
@@ -516,9 +602,6 @@
       }
     }
 
-    .alt-features__text {
-    }
-
     .alt-features__title {
       line-height: 1;
       margin-block-end: 10px;
@@ -529,9 +612,6 @@
       display: block;
       text-transform: uppercase;
       margin-block-end: 10px;
-    }
-
-    .alt-features__description {
     }
   }
 
@@ -548,8 +628,6 @@
 
     background-color: var(--color-bg);
     color: var(--color-text);
-    .testimonial__wrapper {
-    }
 
     .testimonial__figure {
       @media (width >= 62.5rem) {
@@ -740,9 +818,6 @@
     .fw-cta__description {
       margin-block-end: 40px;
     }
-
-    .fw-cta__button {
-    }
   }
 
   .footer {
@@ -776,12 +851,6 @@
       margin-block-end: 10px;
     }
 
-    .footer__copyright {
-    }
-
-    .footer__column {
-    }
-
     .footer__title {
       font-size: 1.375rem;
       margin-block-end: 6px;
@@ -792,9 +861,6 @@
       padding: 0;
       display: grid;
       gap: 6px;
-    }
-
-    .footer__item {
     }
 
     .footer__link {
